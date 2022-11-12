@@ -1,0 +1,53 @@
+.regis-card{
+    width: 800px;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-top:15%; /* Added */
+    display: grid;
+    place-items: center;
+    box-shadow: 0px 0px 10px rgb(128, 128, 128);
+}
+/* .row{
+    width: 100%;
+} */
+.card-title{
+    color: #000000;
+}
+.passmath{
+    width: 100%;
+}
+
+/* ----------------------------------------------------------- */
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 12px;
+    text-align: center;
+    
+}
+.col-regis1{
+    margin-top: 100px;
+    /* height: 300px; */
+    border-radius: 20px;
+    box-shadow: 0px 5px 20px 0px #000000;
+    
+}
+.col-header{
+    text-align: center;
+    height: 60px;
+}
+.row-ngif{
+    height: 70px;
+}
+input{
+    border-radius: 20px;
+}
+.col-but{
+    text-align: center;
+}
+.submit-but{
+    box-shadow:0px 0px 10px rgb(128, 128, 128); 
+    width: 150px;
+}

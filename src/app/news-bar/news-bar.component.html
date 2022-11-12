@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <div class="row">
+    <div class="d-none d-sm-block">
+      <div class="modal-content news-slide ">
+        <ngb-carousel
+          #carousel
+          [interval]="3000"
+          [pauseOnHover]="pauseOnHover"
+          [pauseOnFocus]="pauseOnFocus"
+          (slide)="onSlide($event)"
+        >
+          <ng-template ngbSlide *ngFor="let news of newsList; index as i">
+            <div class="carousel-caption">
+              <h3>{{ news.newsTitle }}</h3>
+              <h5>{{ news.newsDetails }}</h5>
+            </div>
+            <a
+              [href]="news.newLink"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
+              <div class="picsum-img-wrapper">
+                <img
+                  class="img-card"
+                  src="../assets/newsImg/{{news.newsImg}}"
+                  alt="My image description"
+                />
+              </div>
+            </a>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+    <!-- <div class="col">
+      <div class="modal-content detail">test</div>
+    </div> -->
+  </div>
+  <body></body>
+  <footer>
+    <div class="row row-footer">
+      <div>
+
+      </div>
+
+    </div>
+  </footer>
+
+</html>

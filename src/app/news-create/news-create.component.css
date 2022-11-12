@@ -1,0 +1,32 @@
+.card-1 {
+        margin: 0 auto;
+        float: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-style: outset;
+}
+.form-group{
+    margin-top: 20px;
+}
+.row-footer{
+    background-color: rgb(143, 143, 143);
+}
+.card-row{
+    border-style: inset;
+    border-radius: 20px;
+}
+.row-card2{
+    border-style: inset;
+    border-radius: 20px;
+}
+.col-card3{
+    background-color: black;
+    height: 30px;
+    margin-top: 20px;
+    background-image: linear-gradient(to right, rgb(0, 0, 0) , rgb(156, 156, 156));
+}
+.col-table{
+    border-style: inset;
+    /* border-radius: 20px; */
+    border-radius: 20px;
+}

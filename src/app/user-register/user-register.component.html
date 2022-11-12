@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-10 bg-dark col-regis1">
+        <div class="col-md-12 col-12 border-bottom col-header">
+          <h2 class="text-light" style="margin-top: 15px">
+            REGISTER <i class="bi bi-clipboard-plus-fill"></i>
+          </h2>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="(registerFormSubmit)">
+          <div class="row justify-content-center">
+            <!-- EMAIL INPUT -->
+            <div class="col-md-10 col-12 mt-4 row-ngif">
+              <input
+                formControlName="email"
+                [class.is-invalid]="email.touched && email.invalid"
+                type="email"
+                class="form-control"
+                id="id_email"
+                placeholder="Email"
+              />
+              <div *ngIf="email.invalid && email.touched">
+                <div
+                  *ngIf="email.errors?.required"
+                  class="d-block invalid-feedback"
+                >
+                  กรุณาใส่อีเมลของคุณ.
+                </div>
+                <div
+                  *ngIf="email.errors?.email"
+                  class="d-block invalid-feedback"
+                >
+                  Email address is not valid
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <!-- FIRSTNAME INPUT -->
+            <div class="col-md-5 col-12 row-ngif">
+              <input
+                formControlName="firstName"
+                type="text"
+                class="form-control"
+                id="id_firstName"
+                placeholder="FirstName"
+                required
+              />
+              <div
+                *ngIf="firstName.touched && firstName.errors?.required"
+                class="d-block invalid-feedback row-ngif"
+              >
+                กรุณาใส่ชื่อ
+              </div>
+            </div>
+            <!-- LASTNAME INPUT -->
+            <div class="col-md-5 col-12 row-ngif">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastName"
+                id="id_lastName"
+                placeholder="LastName"
+                required
+              />
+              <div
+                *ngIf="lastName.touched && lastName.errors?.required"
+                class="d-block invalid-feedback"
+              >
+                กรุณาใส่นามสกุล
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center border-bottom">
+            <!-- PASSWORD INPUT -->
+            <div class="col-md-5 col-12 row-ngif">
+              <input
+                formControlName="password"
+                [class.is-invalid]="password.touched && password.invalid"
+                type="password"
+                class="form-control"
+                id="id_Password"
+                placeholder="Password"
+              />
+              <div
+                *ngIf="password.touched && password.errors?.required"
+                class="d-block invalid-feedback"
+              >
+                กรุณาใส่ Password
+              </div>
+            </div>
+            <!-- CONFIRM PASSWORD -->
+            <div class="col-md-5 col-12 row-ngif">
+              <input
+                formControlName="password1"
+                [class.is-invalid]="password1.touched && password1.invalid"
+                type="password"
+                class="form-control"
+                id="id_Password1"
+                placeholder="Confirm Password"
+              />
+              <div
+                *ngIf="password1.touched && password1.errors?.required"
+                class="d-block invalid-feedback"
+              >
+                กรุณายืนยัน Password
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center mt-2 mb-2">
+            <div class="col-md-6 col-6 col-but">
+              <button
+                [disabled]="registerForm.invalid"
+                type="button"
+                (click)="registerFormSubmit()"
+                class="btn btn-secondary submit-but"
+              >
+                สมัครสมาชิก
+              </button>
+            </div>
+          </div>
+          <!-- <div class="row justify-content-center mt-2 mb-4">
+            <div class="col-md-6 col-6 col-but">
+              <button type="button" class="btn btn-secondary">ยกเลิก</button>
+            </div>
+          </div> -->
+          <ngb-alert  class="passmaht mt-0 mb-0" #selfClosingAlert *ngIf="successMessage" type="danger">{{ successMessage }}
+          </ngb-alert>
+        </form>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 col-md-12" style="text-align: center;">
+        <button type="button" class="btn btn-dark btn-circle btn-xl" routerLink="/">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+    </div>
+    <!-- 
+      <div class="modal-content">
+        <div class="modal-body">
+          <form [formGroup]="registerForm" (ngSubmit)="registerFormSubmit">
+            <div class="card regis-card bg-dark text-white">
+                <div class="card-header bg-light text-dark " style="width: 100%;">
+                        <h2 class="card-title" id="loginModalLabel">สมัครสมาชิก</h2>
+                </div>
+                    <div class="row g-4 justify-content-md-center">
+                        <div class="col-md-12 mt-5 ">
+                            <label for="id_email" class="form-label">Email address</label>
+                            <input formControlName="email" [class.is-invalid]="email.touched && email.invalid" type="email"
+                              class="form-control" id="id_email" placeholder="name@example.com">
+
+                            <div *ngIf="email.invalid && email.touched">
+                              <div *ngIf="email.errors?.required" class="d-block invalid-feedback">กรุณาใส่อีเมลของคุณ.</div>
+                              <div *ngIf="email.errors?.email" class="d-block invalid-feedback">Email address is not valid</div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mt-2">
+                              <label for="id_firstName" class="form-label">ชื่อจริง</label>
+                              <input formControlName="firstName" type="text" class="form-control" id="id_firstName" required>
+                              <div *ngIf="firstName.touched && firstName.errors?.required" class="d-block invalid-feedback">กรุณาใส่ชื่อ.</div>
+                            </div>
+              
+              
+                            <div class="col-md-6 mt-2">
+                              <label for="id_lastName" class="form-label">นามสกุล</label>
+                              <input type="text" class="form-control" formControlName="lastName" id="id_lastName" required>
+                              <div *ngIf="lastName.touched && lastName.errors?.required" class="d-block invalid-feedback">กรุณาใส่นามสกุล</div>
+                            </div>
+              
+              
+                          <div class="col-md-6 mt-2">
+                            <label for="id_Password" class="form-label">พาสเวิด</label>
+                            <input formControlName="password" [class.is-invalid]="password.touched && password.invalid"
+                              type="password" class="form-control" id="id_Password" >
+                            <div *ngIf="password.touched && password.errors?.required" class="d-block invalid-feedback">กรุณาใส่พาสเวิด.</div>
+                          </div>
+              
+              
+                          <div class="col-md-6 mt-2">
+                            <label for="id_Password" class="form-label">ยืนยันพาสเวิด</label>
+                            <input formControlName="password1" [class.is-invalid]="password1.touched && password1.invalid"type="password" class="form-control" id="id_Password1" >
+                            <div *ngIf="password1.touched && password1.errors?.required" class="d-block invalid-feedback">กรุณายืนยัน Password</div>
+                          </div>
+                    </div>
+                    <div class="card-footer bg-light row" style=" margin-top: 30px;" >
+                        <div class="col-md-6 mt-1 mb-1">
+                            <button  [disabled]="registerForm.invalid" type="button" (click)="registerFormSubmit()" class="btn btn-secondary ms-4 mb-2 mt-2 submit-but">สมัครสมาชิก</button>
+                            <button type="button" class="btn btn-secondary ms-4 submit-but">ยกเลิก</button>
+                          </div>
+                          <div class="col-md-6 mt-1 mb-1" style="height: 58px ;" >
+                            <ngb-alert  class="passmaht mt-0 mb-0" #selfClosingAlert *ngIf="successMessage" type="danger">{{ successMessage }}
+                            </ngb-alert>
+                            
+                          </div>
+                    </div>
+                </div>
+          </form>
+        </div>
+      </div> -->
+  </body>
+  <footer class="mt-5">
+    <div class="row">
+      <div class="col bg-dark fixed-bottom" style="height: 10%"></div>
+    </div>
+  </footer>
+</html>

@@ -1,0 +1,150 @@
+<html>
+  <body>
+    <div class="row justify-content-md-center" style="margin-top: 100px">
+      <div class="col-md-6 col-sm-9 card-row">
+        <div class="card col-sm-12 col-md-10 card-1">
+          <div class="card-header bg-light text-dark" style="width: 100%">
+            <h2 class="card-title" id="loginModalLabel">ไสลด์โฆษณา</h2>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group" [formGroup]="createNewsForm">
+                <label for="">หัวข้อ</label>
+                <input
+                  formControlName="newsTitle"
+                  type="input"
+                  class="form-control"
+                  id="newsTitle"
+                />
+              </div>
+              <div class="form-group">
+                <label for="file" class="form-label">รูปหน้าปก</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="exampleFormControlFile1"
+                  accept="image/*"
+                  (change)="onSelectFile($event)"
+                  style="height: 100%"
+                  multiple
+                />
+              </div>
+              <div class="form-group" [formGroup]="createNewsForm">
+                <label for="exampleFormControlTextarea1">คำอธิบาย</label>
+                <textarea
+                  formControlName="newsDetail"
+                  type="input"
+                  id="newsDetail"
+                  class="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div
+                class="input-group mb-3 form-group"
+                [formGroup]="createNewsForm"
+              >
+                <br />
+                <span class="input-group-text" id="basic-addon3"
+                  >https://example.com/</span
+                >
+                <input
+                  formControlName="newLink"
+                  id="newLink"
+                  type="text"
+                  class="form-control"
+                  aria-describedby="basic-addon3"
+                />
+              </div>
+              <button
+                type="button"
+                (click)="createNewsFormSubmit()"
+                class="btn btn-success"
+              >
+                Create
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-3 col-sm-12 row-card2"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-card3"></div>
+    </div>
+    <div class="row justify-content-center" style="margin-top: 30px">
+      <div class="col-md-8 col-11 col-table">
+        <table class="table table-striped table1" [formGroup]="createNewsForm">
+          <thead>
+            <tr>
+              <th scope="col" hidden>#</th>
+              <th scope="col" sortable="Date">CreateDate</th>
+              <th scope="col" sortable="Title">Title</th>
+              <th scope="col" sortable="User">User</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let news of newsList">
+              <th scope="row" hidden >{{ news.newsId }}</th>
+              <td>
+                {{ news.dateCreate }}
+              </td>
+              <td>{{ news.newsTitle }}</td>
+              <td>{{ news.userID }}</td>
+              <td>
+                <input
+                  hidden
+                  #newsDeletes
+                  value="{{ news.newsId }}"
+                  type="text"
+                  class="form-control"
+                  id="newsId"
+                />
+                <button class="btn btn-danger" (click)="confirmDelete(content)">
+                  <i class="bi bi-trash3"></i>
+                </button>
+
+                <!-- POPUP -->
+                <ng-template #content let-c="close" let-d="dismiss">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">
+                      ต้องการจะลบหรือไม่ ?
+                    </h4>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      aria-label="Close"
+                      (click)="d('Cross click')"
+                    ></button>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger"
+                      (click)="newsDelete(newsDeletes)"
+                    >
+                    <i class="bi bi-trash3"></i>
+                    </button>
+                  </div>
+                </ng-template>
+                <!-- POPUP -->
+
+
+              </td>
+            </tr>
+            <!-- <td>1</td>
+            <td>
+            </td>
+            <td><img src="../../assets/newsImg/testt.jpg" class="" style="width: 100px" alt=""></td>
+            <td>test</td>
+            <td>test</td> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <div class="row row-footer"></div>
+  </footer>
+</html>
