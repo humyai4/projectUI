@@ -16,6 +16,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { NewsCreateComponent } from './news-create/news-create.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LineLoginComponent } from './line-login/line-login.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     HomePageComponent,
     UserUpdateComponent,
     NewsCreateComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LineLoginComponent
   ],
   imports: [
     NgbPaginationModule, 

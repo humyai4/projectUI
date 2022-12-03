@@ -22,9 +22,10 @@
 
           <form class="row form-inline justify-content-center" *ngIf="!butinv">
             <div ngbDropdown class="row col-md-10 col-6 justify-content-center">
-              
+
               <button
                 type="button"
+                routerLink="profile"
                 class=" btn-2 col-md-10 col-9 btn btn-secondary justify-content-center">
                 {{ session }}
               </button>
@@ -39,7 +40,7 @@
                 aria-labelledby="dropdownBasic1"
                 class="sassion-dropdown"
               >
-                <button ngbDropdownItem>Profile</button>
+                <button ngbDropdownItem routerLink="profile">Profile</button>
                 <button (click)="logout()"  ngbDropdownItem>Logout</button>
               </div>
             </div>

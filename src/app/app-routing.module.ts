@@ -7,10 +7,14 @@ import { NewsCreateComponent } from './news-create/news-create.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
-    path:"" , component : HomePageComponent,  
+    path:"" , component : HomePageComponent,
+  },
+  {
+    path:"profile", component : UserProfileComponent,
   },
   {
     path:"edituser",  component : UserUpdateComponent,
