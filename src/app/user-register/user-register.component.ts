@@ -67,7 +67,7 @@ export class UserRegisterComponent implements OnInit {
     const userRegister = new FormData();
     const formData = this.registerForm.value;
     userRegister.append('email', formData.email);
-    let url = 'https://ed58-2403-6200-8830-cb1f-fc6e-3a7d-20b6-353a.ap.ngrok.io/user/checkEmail';
+    let url = 'https://e112-180-183-246-177.ap.ngrok.io/user/checkEmail';
     this.http
       .post(url, userRegister)
       .toPromise()

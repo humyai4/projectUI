@@ -8,6 +8,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LineLoginComponent } from './line-login/line-login.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   {
     path:"newscreate", component : NewsCreateComponent,
     canActivate:[RoleGuard]
+  },
+  {
+    path:"linelogin", component : LineLoginComponent,
   }
 ];
 
