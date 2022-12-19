@@ -1,61 +1,15 @@
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My LIFF v2</title>
-  <style>
-    #pictureUrl {
-      display: block;
-      margin: 0 auto
-    }
-  </style>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
-
 <body>
-<img id="pictureUrl" width="25%">
-<p id="userId"></p>
-<p id="displayName"></p>
-<p id="statusMessage"></p>
-<p id="getDecodedIDToken"></p>
-<script src="https://static.line-scdn.net/liff/edge/versions/2.7.1/sdk.js"></script>
-<script>
-    function runApp() {
-      liff.getProfile().then(profile => {
-        document.getElementById("pictureUrl").src = profile.pictureUrl;
-        document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
-        document.getElementById("displayName").innerHTML = '<b>DisplayName:</b> ' + profile.displayName;
-        document.getElementById("statusMessage").innerHTML = '<b>StatusMessage:</b> ' + profile.statusMessage;
-        document.getElementById("getDecodedIDToken").innerHTML = '<b>Email:</b> ' + liff.getDecodedIDToken().email;
-      }).catch(err => console.error(err));
-    }
-    function httpGet(theUrl) {
-      var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open("GET", theUrl, false); // false for synchronous request
-      xmlHttp.send(null);
-      return xmlHttp.responseText;
-    }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ใส่ liffId ตรงนี้  ///
-    liff.init({ liffId: "1657606401-WgJpKdqY" }, () => {
-      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ใส่ liffId ตรงนี้  ///
-      if (liff.isLoggedIn()) {
-       // liff.getProfile().then(el => {
-         // console.log(el.userId)
-          // httpGet("http://localhost:8080/line/uid?uid=" + el.userId)
-          // window.location.assign("https://young-castle-10960.herokuapp.com/userqueue/" + el.userId)
-         // window.location.assign("https://203.158.201.70/userqueue/" + el.userId)
-
-          // window.location.assign("https://young-depths-90743.herokuapp.com/userqueue/" + el.userId)
-          // window.location.assign("http://localhost:3000/userqueue/" + el.userId)
-
-          // localStorage.clear()
-        // })
-         runApp()
-      } else {
-        liff.login();
-      }
-    }, err => console.error(err.code, error.message));
-  </script>
+<br><br><br><br>
+testests
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </body>
-
 </html>
