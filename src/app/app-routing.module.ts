@@ -9,6 +9,8 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LineLoginComponent } from './line-login/line-login.component';
+import { FineBandComponent } from './fine-band/fine-band.component';
+import { ContactBandComponent } from './contact-band/contact-band.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,7 @@ const routes: Routes = [
   },
   {
     path:"profile", component : UserProfileComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:"edituser",  component : UserUpdateComponent,
@@ -26,6 +29,7 @@ const routes: Routes = [
   },
   {
     path:"register", component : UserRegisterComponent,
+
   },
   {
     path:"newscreate", component : NewsCreateComponent,
@@ -33,7 +37,15 @@ const routes: Routes = [
   },
   {
     path:"linelogin", component : LineLoginComponent,
-  }
+    // canActivate:[AuthGuard]
+  },
+  {
+      path:"findband", component : FineBandComponent,
+      canActivate:[AuthGuard]
+    },
+    {
+    path:"chooseband", component : ContactBandComponent,
+    }
 ];
 
 

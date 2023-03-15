@@ -17,6 +17,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { NewsCreateComponent } from './news-create/news-create.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LineLoginComponent } from './line-login/line-login.component';
+import { FineBandComponent } from './fine-band/fine-band.component';
+import { ContactBandComponent } from './contact-band/contact-band.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { LineLoginComponent } from './line-login/line-login.component';
     UserUpdateComponent,
     NewsCreateComponent,
     UserProfileComponent,
-    LineLoginComponent
+    LineLoginComponent,
+    FineBandComponent,
+    ContactBandComponent
   ],
   imports: [
     NgbPaginationModule, 

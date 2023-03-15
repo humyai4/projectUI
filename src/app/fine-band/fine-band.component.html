@@ -1,0 +1,87 @@
+<br /><br /><br />
+<div class="row">
+  <div class="col">
+    <div>
+        <h1>
+            ค้นหานักดนตรี
+        </h1>
+    </div>
+    <table class="table table-striped table" [formGroup]="chooseBandForm">
+      <thead>
+        <tr>
+          <th scope="col" hidden>#</th>
+          <th scope="col" sortable="Band"><h3>วง</h3></th>
+          <th scope="col" sortable="Price"><h3>เรทราคา</h3></th>
+          <th scope="col" sortable="Member"><h3>จำนวนสมาชิก</h3></th>
+          <th scope="col" sortable="Type"><h3>รูปแบบงาน</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let band of findband">
+            <th scope="row" hidden>{{band.id}}</th>
+          <td>
+            {{ band.bjName }}
+          </td>
+          <td>
+            {{ band.jobPrice }}
+          </td>
+          <td>
+            {{ band.memSize}}
+          </td>
+          <td>
+            {{band.jobType}}
+          </td>
+          <td><input
+            hidden
+            #chooseBands
+            value="{{band.id}}" 
+            type="text"
+            class="form-control"
+            id="bjId"
+            >
+            <input
+            hidden
+            #notis
+            value="{{band.userId}}" 
+            type="text"
+            class="form-control"
+            id="userIdTo"
+            >
+            
+            <button class="btn btn-success" (click)="confirmChoose(content)">
+                <span>จ้าง</span>
+              </button>
+
+              <!-- POPUP -->
+              <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">
+                    ต้องการจ้างวงนี้หรือไม่ ?
+                  </h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    aria-label="Close"
+                    (click)="d('Cross click')"
+                  ></button>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-success"
+                    (click)="chooseBand(chooseBands)"
+                    (click)="noti(notis)"
+                    
+                  >
+                  OK
+                  </button>
+                </div>
+              </ng-template>
+              <!-- POPUP -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+</div>
