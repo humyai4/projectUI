@@ -17,10 +17,31 @@
           <a href="" class="navbar-brand">BANDLIKE</a>
         </div>
 
+        <!-- notify -->
+        
+        <a ngbDropdown ngbDropdownToggle href="#" class="notification">
+          <span><h2><i class="bi bi-bell-fill"></i></h2></span>
+          
+          <span class="badge">3</span>
+          <div ngbDropdownMenu >Tset</div>
+        </a>
+
+
+        <form class="form-inline col-md-2" *ngIf="!butinv">
+          <button           
+          class="btn btn-1 btn-light regis-b"
+          type="button"
+          routerLink="/findband">
+          หาวงดนตรี
+          </button>
+        </form>
+
+
         <!-- SESION -->
         <div class="col-md-2 col-sm-12 bg-dark " style="text-align: center">
 
           <form class="row form-inline justify-content-center" *ngIf="!butinv">
+          
             <div ngbDropdown class="row col-md-10 col-6 justify-content-center">
 
               <button
@@ -49,14 +70,6 @@
             </div>
           </form>
 
-          <form class="form-inline col-12" *ngIf="!butinv">
-            <button           
-            class="btn btn-1 btn-light regis-b"
-            type="button"
-            routerLink="/findband">
-            หาวงดนตรี
-            </button>
-          </form>
           <!-- lOGIN-LOGOUT -->
           <form class="form-inline col-12" *ngIf="butinv">
             <button
