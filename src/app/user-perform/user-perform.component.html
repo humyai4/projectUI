@@ -1,0 +1,37 @@
+<body>
+    
+    <div class="row">
+    <div class="card border-0" style="max-width: 50rem;">
+        <div class="card border-0">
+            <h2>ผลงาน</h2>
+        </div>
+
+        <div class="card-body border-0" style="height: 500px; overflow-y: scroll;">
+            <div class="grid-container">
+                <div *ngFor="let perform of performList;">
+                    <div class="card" style="width: 18rem;">
+                   <img src="" class="card-img-top" alt="...">
+                   <div class="card-body">
+                     <h6 class="card-title">{{perform.performName}}</h6>
+                     <p class="card-text">{{perform.performDescrips}}</p>
+                     
+                   </div>
+                 </div>
+               </div>
+
+            </div>
+            
+        </div>
+        <div class="card border-0 text-center row justify-content-center">
+            <div class="col-md-12"><button class="btn btn-success col-md-4" style="margin-top: 10px;" routerLink="/performcreate">เพิ่ม</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- เรียกดูผลงาน
+<form  enctype="multipart/form-data">
+    <input type="file" name="images" multiple />
+    <button type="submit">Upload</button>
+  </form> -->
+
+</body>

@@ -1,17 +1,88 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+
 <body>
-<div class="row border-top border-bottom">
-  <h2>แก้ไขโปรไฟล์</h2>
+<div class="row" *ngIf="!butedit">
+<div class="col">
+  <div class="card " style="max-width: 50rem;">
+    <div class="card-header">
+      <h2>แก้ไขโปรไฟล์</h2>
+    </div>
+    <div class="card-body">
+
+      <form [formGroup]="userUpdateForm">
+      <div>
+        <h4>Username</h4>
+      </div>
+      <input formControlName="username" type="text" class="form-control edit-textbox" id="id_username" aria-describedby="Username" value="">
+      <div>
+        <h4>email</h4>
+      </div>
+      <input formControlName="email" type="text" class="form-control edit-textbox" id="id_email" aria-describedby="email" value="">
+      <div>
+        <h4>Tell</h4 >
+      </div>
+      <input  formControlName="tell" type="text" class="form-control edit-textbox" id="id_tell" aria-describedby="tell"  value="">
+      <div>
+        <h4>Fullname</h4>
+      </div>
+      <input formControlName="firstName" type="text" class="form-control edit-textbox" id="id_firstName" aria-describedby="firstName" value="">
+      <div>
+        <h4>Lastname</h4>
+      </div>
+      <input formControlName="lastName" type="text" class="form-control edit-textbox" id="id_lastName" aria-describedby="lastName" value="">
+
+      <div>
+        <button class="btn btn-success text-light" (click)="userupdateFormSubmit()"> <h6> บันทึก </h6></button>
+        <button class="btn btn-light text-dark" (click)="buttoneditcancle()"> <h6> ยกเลิก </h6></button>
+      </div>
+    </form>
+
+    </div>
+
+    <div class="card-footer text-muted">
+      update {{profile.dateRegister}}
+    </div>
+  </div>
 </div>
+</div>
+<div class="row" *ngIf="butedit">
+  <div class="col">
+    <div class="card " style="max-width: 50rem;">
+      <div class="card-header">
+        <h2>{{profile.username}}</h2>
+      </div>
+      <div class="card-body">
+        <div >
+          <h4>Username</h4>
+        </div>
+        <input type="text" class="form-control edit-textbox" id="exampleInputEmail1" aria-describedby="Username" disabled placeholder="{{profile.username}}">
+        <div>
+          <h4>Email</h4>
+        </div>
+        <input type="text" class="form-control edit-textbox" id="exampleInputEmail1" aria-describedby="Username" disabled placeholder="{{profile.email}}">
+        <div>
+          <h4>Tell</h4 >
+        </div>
+        <input type="text" class="form-control edit-textbox" id="exampleInputEmail1" aria-describedby="Username" disabled placeholder="0{{profile.tellNumb}}">
+        <div>
+          <h4>Fullname</h4>
+        </div>
+        <input type="text" class="form-control edit-textbox" id="exampleInputEmail1" aria-describedby="Username" disabled placeholder="{{profile.fname}}">
+        <div>
+          <h4>Lastname</h4>
+        </div>
+        <input type="text" class="form-control edit-textbox" id="exampleInputEmail1" aria-describedby="Username" disabled placeholder="{{profile.lname}}">
+
+        <div>
+          <button class="btn btn-dark" (click)="buttonedit()"> <h6>แก้ไข</h6></button>
+        </div>
+
+      </div>
+      <div class="card-footer text-muted">
+        update {{profile.dateRegister}}
+      </div>
+    </div>
+  </div>
+  </div>
 </body>
-</html>
 
 

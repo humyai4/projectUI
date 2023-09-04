@@ -19,6 +19,15 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LineLoginComponent } from './line-login/line-login.component';
 import { FineBandComponent } from './fine-band/fine-band.component';
 import { ContactBandComponent } from './contact-band/contact-band.component';
+import { NotificationComponent } from './notification/notification.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { BandPageComponent } from './band-page/band-page.component';
+import { UserPerformComponent } from './user-perform/user-perform.component';
+// import { DataTablesModule } from "angular-datatables";
+import { FilterPipe } from './filter.pipe';
+import { PerformCreateComponent } from './perform-create/perform-create.component';
+
 
 
 @NgModule({
@@ -34,9 +43,17 @@ import { ContactBandComponent } from './contact-band/contact-band.component';
     UserProfileComponent,
     LineLoginComponent,
     FineBandComponent,
-    ContactBandComponent
+    ContactBandComponent,
+    NotificationComponent,
+    UserDetailComponent,
+    ProfilePageComponent,
+    BandPageComponent,
+    UserPerformComponent,
+    FilterPipe,
+    PerformCreateComponent
   ],
   imports: [
+    
     NgbPaginationModule, 
     NgbAlertModule,
     BrowserModule,
@@ -46,6 +63,7 @@ import { ContactBandComponent } from './contact-band/contact-band.component';
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot([]),
+    // DataTablesModule ,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,7 +30,7 @@ export class UserRegisterComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   @ViewChild('selfClosingAlert', { static: false }) selfClosingAlert:
     | NgbAlert
@@ -44,8 +44,6 @@ export class UserRegisterComponent implements OnInit {
       }
     });
   }
-  // public changeSuccessMessage() { this._success.next(`${new Date()} - Message successfully changed.`); }
-
   get firstName(): any {
     return this.registerForm.get('firstName');
   }
@@ -85,12 +83,14 @@ export class UserRegisterComponent implements OnInit {
         } else {
           console.log('ok200');
           const userRegister = new FormData();
-          const UserNames = "user" + Math.floor(Math.random()*900000);
+          const UserNames = "user" + Math.floor(Math.random() * 900000);
           this.roles = '3';
           userRegister.append('email', formData.email);
-          userRegister.append('password',formData.password);
+          userRegister.append('password', formData.password);
           userRegister.append('role', this.roles);
           userRegister.append('username', UserNames);
+          userRegister.append('fName', formData.firstName);
+          userRegister.append('lName',formData.lastName);
           let url = 'http://180.183.246.177:1114/user/register';
           this.http
             .post(url, userRegister)
@@ -104,32 +104,5 @@ export class UserRegisterComponent implements OnInit {
           console.log(this.successMessage);
         }
       });
-
-    // if (formData.password1 == formData.password ) {
-    //   console.log('ok200');
-    //   const userRegister = new FormData();
-    //   this.roles = '3';
-    //   userRegister.append('email', formData.email);
-    //   userRegister.append('password', formData.password);
-    //   userRegister.append('role', this.roles);
-
-    //   let url = 'http://localhost:8080/user/register';
-    //   this.http
-    //     .post(url, userRegister)
-
-    //     .toPromise()
-    //     .then((resp: any) => {
-    //       this.status = resp.status ;
-    //       console.log('ok200', this.status);
-    //     });
-
-    //   console.log(this.successMessage);
-    //   this.router.navigate(['login']);
-    // }else{
-    //   this._success.next(`พาสเวิดไม่ตรงกัน.`);
-    //   this.password.reset();
-    //   this.password1.reset();
-    //   console.log(this.successMessage);
-    // }
   }
 }

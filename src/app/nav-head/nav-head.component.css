@@ -1,7 +1,8 @@
 .btn-1{
     overflow: hidden;
     margin: 1%;
-    width: 47%;
+    width: 7rem;
+    height: 2rem;
 }
 .btn-2{
     overflow: hidden;
@@ -15,7 +16,7 @@
 } */
 
 .navbar{
-    height: 70px;
+    height: 50px;
 }
 /* .navbar-brand{
     margin-left: 2%;

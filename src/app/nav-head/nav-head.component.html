@@ -1,46 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div>
-      <nav
-        class="navbar navbar-dark bg-dark fixed-top row"
-      >
 
+<nav class="navbar navbar-dark bg-dark fixed-top  justify-content-start" >
       <!-- LOGO -->
         <div class="col-md-2 col-sm-12 bg-dark" style="text-align: center">
-          <a href="" class="navbar-brand">BANDLIKE</a>
+          <h5><a href="" class="navbar-brand">BANDLIKE</a></h5>
         </div>
+        <ul class="nav col-md-7 col-sm-12 text-center">
+          <li class="nav-item">
+            <h6><a class="nav-link active text-light border border-white border-top-0 border-bottom-0" style="width: 7rem;" href="">Home</a></h6>
+          </li>
+          <li class="nav-item">
+            <h6><a class="nav-link text-light form-inline border border-white border-top-0 border-bottom-0 border-start-0 " style="width: 7rem;" *ngIf="!butinv" href="#" routerLink="/band">หาวงดนตรี</a></h6>
+          </li>
+          <li class="nav-item">
+            <h6><a class="nav-link text-light form-inline border border-white border-top-0 border-bottom-0 border-start-0 " style="width: 9rem;" *ngIf="!butinv" href="#" routerLink="/notification"> <i class="bi bi-bell"></i> Notification</a></h6>
+          </li>
+          
+        </ul>
+        
+
 
         <!-- notify -->
-        
-        <a ngbDropdown ngbDropdownToggle href="#" class="notification">
+<!--         
+        <a ngbDropdown ngbDropdownToggle href="#" routerLink="notification" class="notification">
           <span><h2><i class="bi bi-bell-fill"></i></h2></span>
-          
-          <span class="badge">3</span>
           <div ngbDropdownMenu >Tset</div>
-        </a>
+        </a> -->
 
 
-        <form class="form-inline col-md-2" *ngIf="!butinv">
+        <!-- <form class="form-inline col-md-2" *ngIf="!butinv">
           <button           
           class="btn btn-1 btn-light regis-b"
           type="button"
           routerLink="/findband">
-          หาวงดนตรี
+         <h6>หาวงดนตรี</h6> 
           </button>
-        </form>
+        </form> -->
 
 
         <!-- SESION -->
-        <div class="col-md-2 col-sm-12 bg-dark " style="text-align: center">
 
-          <form class="row form-inline justify-content-center" *ngIf="!butinv">
+        <ul class="nav col-md-1 text-center justify-content-center">
+          <li class="nav-item">
+            <!-- <h6><a routerLink="/profile" class="col-md-2 col-sm-12 nav-link text-light btn-dark" style="text-align: center" *ngIf="!butinv">{{ session }}</a></h6> -->
+          </li>
+        </ul>
+
+
+
+        <!-- Login -->
+        <ul class=" nav col-md-2 text-center justify-content-end "  *ngIf="!butinv">
+          <li>
+            <h3><i class=" nav-item  bi bi-line text-white text-center"></i></h3>
+          </li>
+          <li></li>
+          <li class="nav-item">
+            <h6><a routerLink="/profilepage" class="nav-link text-light btn-dark" style="text-align: center">{{ session }}</a></h6>
+          </li>
+          <li  class="nav-item col-md-2">
+            <h3><a (click)="logout()"><i class="bi bi-box-arrow-right text-white text-center"></i></a>
+              </h3>
+          </li>
+        </ul>
+        <ul  class="nav col-md-2 text-center justify-content-end" *ngIf="butinv">
+          <li class="nav-item col-md-3">
+            <h3><a routerLink="/register"><i class="bi bi-clipboard-plus-fill text-white text-center"></i></a></h3>
+          </li>
+          <li  class="nav-item col-md-3">
+            <h3><a routerLink="/login"><i class="bi bi-box-arrow-in-right text-white text-center"></i></a></h3>
+          </li>
+        </ul>
+
+
+
+        <!-- <div  routerLink="/profile" class="col-md-2 col-sm-12 text-light btn-dark" style="text-align: center" *ngIf="!butinv">
+          <h6>{{ session }}</h6> -->
+          <!-- <form class="row form-inline justify-content-center" *ngIf="!butinv">
           
             <div ngbDropdown class="row col-md-10 col-6 justify-content-center">
 
@@ -48,7 +82,7 @@
                 type="button"
                 routerLink="profile"
                 class=" btn-2 col-md-10 col-9 btn btn-secondary justify-content-center">
-                {{ session }}
+                <h6>{{ session }}</h6>
               </button>
               <button
                 type="button"
@@ -68,10 +102,10 @@
 
               </div>
             </div>
-          </form>
+          </form> -->
 
           <!-- lOGIN-LOGOUT -->
-          <form class="form-inline col-12" *ngIf="butinv">
+          <!-- <form class="form-inline col-12" *ngIf="butinv">
             <button
               class="btn btn-1 btn-light regis-b"
               type="button"
@@ -86,9 +120,9 @@
             >
               <i class="bi bi-box-arrow-in-right"></i>
             </button>
-          </form>
-        </div>
+          </form> -->
+        <!-- </div> -->
+        
+        
       </nav>
-    </div>
-  </body>
-</html>
+

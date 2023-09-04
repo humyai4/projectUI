@@ -40,7 +40,7 @@ export class ContactBandComponent implements OnInit {
       this.choosedband = response;
       const bjidArray = response.map(item => item.bjId);
       this.handleArray(bjidArray);
-      // console.log(this.choosedband,bjidArray)
+      console.log(this.choosedband,bjidArray)
     });
 
 

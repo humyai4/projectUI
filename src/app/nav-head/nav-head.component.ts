@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { LocalService } from '../local.service';
 import { Router } from '@angular/router';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { createPopper } from '@popperjs/core';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +23,7 @@ export class NavHeadComponent implements OnInit{
     
   }
 
+  
   ngOnInit() {
     const email = localStorage.getItem('email');
     if (email == '' || email == null) {

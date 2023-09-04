@@ -1,87 +1,169 @@
-<br /><br /><br />
-<div class="row">
-  <div class="col">
-    <div>
-        <h1>
-            ค้นหานักดนตรี
-        </h1>
-    </div>
-    <table class="table table-striped table" [formGroup]="chooseBandForm">
-      <thead>
-        <tr>
-          <th scope="col" hidden>#</th>
-          <th scope="col" sortable="Band"><h3>วง</h3></th>
-          <th scope="col" sortable="Price"><h3>เรทราคา</h3></th>
-          <th scope="col" sortable="Member"><h3>จำนวนสมาชิก</h3></th>
-          <th scope="col" sortable="Type"><h3>รูปแบบงาน</h3></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let band of findband">
-            <th scope="row" hidden>{{band.id}}</th>
-          <td>
-            {{ band.bjName }}
-          </td>
-          <td>
-            {{ band.jobPrice }}
-          </td>
-          <td>
-            {{ band.memSize}}
-          </td>
-          <td>
-            {{band.jobType}}
-          </td>
-          <td><input
-            hidden
-            #chooseBands
-            value="{{band.id}}" 
-            type="text"
-            class="form-control"
-            id="bjId"
-            >
-            <input
-            hidden
-            #notis
-            value="{{band.userId}}" 
-            type="text"
-            class="form-control"
-            id="userIdTo"
-            >
-            
-            <button class="btn btn-success" (click)="confirmChoose(content)">
-                <span>จ้าง</span>
-              </button>
+<body>
+  <div class="row text-center justify-content-center" style="margin-bottom: 50px;">
+    <h2>ต้องการงานเล่นหรือไม่?</h2>
+    <h5>เพิ่มวงดนตรีของคุณ</h5>
+    <h5>เพื่อเพิ่มโอกาศให้เจ้าของร้าน</h5>
+    <h5>หรือผู้ที่สนใจจ้างนักตรีเห็น</h5>
+    <br><br>
+    <button (click)="confirmChoose(content)" type="button" class="col-md-1 btn btn-secondary" data-toggle="modal"
+      data-target="#exampleModalCenter">
+      เพิ่มวงดรี
+    </button>
 
-              <!-- POPUP -->
-              <ng-template #content let-c="close" let-d="dismiss">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="modal-basic-title">
-                    ต้องการจ้างวงนี้หรือไม่ ?
-                  </h4>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    aria-label="Close"
-                    (click)="d('Cross click')"
-                  ></button>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"
-                    (click)="chooseBand(chooseBands)"
-                    (click)="noti(notis)"
-                    
-                  >
-                  OK
-                  </button>
-                </div>
-              </ng-template>
-              <!-- POPUP -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- MODEL -->
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-basic-title">
+          สร้างวงดนตรี
+        </h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      
+      </div>  
+      <div class="modal-body">
+        <form [formGroup]="createForm">
+          <div>
+            <label for="">
+              <h4>ชื่อวงดนตรี</h4>
+            </label>
+            <input formControlName="bjName" type="text" class="form-control" placeholder="ชื่อวงดนตรี">
+            <!-- <small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            <br>
+            <label for="">
+              <h4>เรทราคา</h4>
+            </label>
+            <input formControlName="jobPrice" type="number" class="form-control" placeholder="เรทราคา">
+            <br>
+            <label for="">
+              <h4>จำนวนสมาชิก</h4>
+            </label>
+            <input formControlName="memSize" type="number" class="form-control" placeholder="จำนวนสมาชิก">
+            <br>
+            <label for="exampleFormControlSelect1"><h4>รูปแบบงาน</h4></label>
+            <select formControlName="jobType"  class="form-control" id="exampleFormControlSelect1">
+              <option>งานแทน</option>
+              <option>รายวัน</option>
+              <option>ครึ่งวัน</option>
+              <option>รายชั่วโมง</option>
+              <option>ประจำร้าน</option>
+            </select>
+
+          </div>
+        </form>
+      </div>
+
+
+      <div class="modal-footer">
+        <button [disabled]="createForm.invalid" (click)="create()" type="button" class="btn btn-outline-success">
     
+          สร้าง
+        </button>
+
+
+      </div>
+    </ng-template>
   </div>
-</div>
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+
+
+  <div class="row justify-content-end" style="margin-bottom: 10px;">
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h2>
+            นักดนตรี & วงดนตรี
+          </h2>
+        </div>
+        <div class="card-body  " style="height: 500px; overflow-y: scroll;">
+
+          <!---->
+          <table  class="table table-striped table" [formGroup]="chooseBandForm">
+            <thead>
+                <th scope="col" hidden>#</th>
+                <th class="col-md-2" scope="col" sortable="bjName" (click)="sort('bjId')">
+                  <h4>ชื่อวง&nbsp; <i class="fa fa-sort"></i> </h4>
+                </th>
+                <th class="col-md-1" scope="col" sortable="true">
+                  <h4>เรท</h4>
+                </th>
+                <th class="col-md-1" scope="col" sortable="true">
+                  <h4>สมาชิก</h4>
+                </th>
+                <th scope="col" sort3ble="Type">
+                  <h4>รูปแบบงาน</h4>
+                </th>
+                <th class="col-md-2" scope="col" sort3ble="Type">
+                  <h4></h4>
+                </th>
+            </thead>
+            <div>
+
+            </div>
+            <tbody>
+              <tr *ngFor="let band of findband">
+                <th scope="row" hidden>{{band.id}}</th>
+                <td>
+                  <h6 >{{ band.bjName }}</h6>
+                </td>
+                <td>
+                  <h6>{{ band.jobPrice }}</h6>
+                </td>
+                <td>
+                  <h6>{{ band.memSize}}</h6>
+                </td>
+                <td> 
+                  <h6>{{band.jobType}}</h6>
+                </td>
+                <td>
+                  <button class="btn btn-light">
+                    <span>รายระเอียด</span>
+                  </button>
+                </td>
+                <td><input hidden #chooseBands value="{{band.id}}" type="text" class="form-control" id="bjId">
+                  <input hidden #notis value="{{band.userId}}" type="text" class="form-control" id="userIdTo">
+                  <button *ngIf="isToggleButton(chooseBands)" class="btn btn-success" (click)="confirmChoose(content)">
+                    <span>สนใจ</span>
+                  </button>
+                  <button *ngIf="!isToggleButton(chooseBands)" disabled class="btn btn-Light"
+                    (click)="confirmChoose(content)">
+                    <span>สนใจแล้ว</span>
+                  </button>
+
+
+                  <!-- POPUP -->
+                  <ng-template #content let-c="close" let-d="dismiss">
+                    <div class="modal-header" >
+                      <h4 class="modal-title" id="modal-basic-title">
+                        สนใจวงนี้หรือไม่ ?
+                      </h4>
+                      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+                    </div>
+                    <div class="modal-footer " >
+                      <button type="button" class="btn btn-outline-success" (click)="chooseBand(chooseBands)"
+                        (click)="noti(notis)">
+                        OK
+                      </button>
+                    </div>
+                  </ng-template>
+                  <!-- POPUP -->
+
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="">
+
+    </div>
+  </div>
+
+</body>

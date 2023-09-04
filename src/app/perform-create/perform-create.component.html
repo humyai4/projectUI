@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <div class="row text-center">
+        <h1>เพิ่มผลงานของคุณ</h1>
+    </div>
+
+    <form [formGroup]="performForm">
+        <div class="row text-center" style="margin-top: 50px;">
+            <h2>ผลงานชื่อ?</h2>
+        </div>
+        <div class="row justify-content-center form-group">
+            <div class="col-md-4">
+                <input formControlName="performName" class="col-md-12 form-control " type="text">
+            </div>
+        </div>
+        <div class="row text-center" style="margin-top: 50px;">
+            <h2>อธิบายเกี่ยวกับผลงาน</h2>
+        </div>
+        <div class="row justify-content-center form-group">
+            <div class="col-md-4">
+                <textarea formControlName="performDescrips" class="col-md-12 form-control"rows="10"></textarea>
+            </div>
+        </div>
+        <button (click)="savePerform()">teste</button>
+
+    </form>
+
+</body>
+
+</html>

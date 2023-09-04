@@ -1,0 +1,17 @@
+<p>notification works!</p>
+<br /><br /><br />
+<div class="row">
+    <div>
+        <h1>
+            notification
+        </h1>
+    </div>
+    <div *ngFor="let notify of noti" class="row">
+
+        <div class="col-12">
+            <button type="button" class="btn btn-light" mdbRipple rippleColor="dark">
+              <span>{{notify.userIdForm}}{{notify.descrip}}</span>  
+            </button> 
+        </div>
+    </div>
+</div>
