@@ -23,13 +23,40 @@
         </div>
         <div class="row justify-content-center form-group">
             <div class="col-md-4">
-                <textarea formControlName="performDescrips" class="col-md-12 form-control"rows="10"></textarea>
+                <textarea formControlName="performDescrips" class="col-md-12 form-control" rows="10"></textarea>
             </div>
         </div>
+
+        <!-- <div *ngFor="">
+
+        </div> -->
+        <div class="row justify-content-center form-group " style="margin-top: 50px;">
+            <div class="col-md-4">
+                <input type="file" formControlName="picture" class="col-md-12 form-control"
+                    accept="image/jpeg, image/png, image/jpg" multiple="multiple">
+                <output></output>
+            </div>
+
+        </div>
+        <div class="row justify-content-center form-group" style="margin-top: 50px;">
+            <div class="col-md-4">
+                <input type="file" class="col-md-12 form-control" (change)="onselect($event)" multiple accept="image/jpeg, image/png, image/jpg">
+            </div>
+        </div>
+
+        <div class="row justify-content-center form-group" style="margin-top: 50px;">
+            <div class="col-md-9">
+                <img *ngFor='let url of urls' [src]="url" class="col-md-2" style="margin: 5px;" ><br>
+            </div>
+
+        </div>
+
+
+
         <button (click)="savePerform()">teste</button>
 
-    </form>
 
+    </form>
 </body>
 
 </html>

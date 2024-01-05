@@ -21,7 +21,7 @@ export class UserPerformComponent implements OnInit {
     let url = `http://180.183.246.177:1114/perform/performuser?user=${user}`;
     this.http.get(url).subscribe((response) => {
       this.performList = response;
-      console.log(this.performList)
+      console.log()
     })
     }
 

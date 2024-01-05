@@ -25,7 +25,7 @@ export class RoleGuard implements CanActivate {
     if (this.service.HaveRoleAccess(route.url[0].path)) {
       return true;
     } else {
-      alert('ไม่มีสิทธิ คิดเป็นแฟน');
+      alert('คุณไม่มีสิทธิ');
       this.route.navigate(['']);
       return false;
     }

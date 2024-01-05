@@ -1,20 +1,29 @@
-<br><br><br>
-<div class="row">
-    <div class="col">
-        <div>
-            <h1>
-                วงที่คุณติดต่อไป
-            </h1>
-            
-        </div>
-        <table class="table table-striped table">
-            <thead>
-                <tr>
-                    <th>
+<div class="card">
+    <div class="card-header">
+        <h2>
+            วงที่คุณสนใจ
+        </h2>
+    </div>
+    <div  class="card-body " style="height: 300px; overflow-y: scroll;">
+        <table class="table table-striped table table-hover">
+            <tbody>
+                <tr *ngFor="let band of contactBand">
+                    <td class="col-md-4" style="text-align: center;">
+                        {{band.bjName}}
+                    </td>
+                    <td class="col-md-3">
+                        <button (click)="detailBut(chooseBands.value)" class="btn btn-outline-info">รายระเอียด
+                        </button>
+                        <input hidden #chooseBands value="{{band.id}}" type="text">
+                    </td>
+                    <td class="col-md-2">
+                        <input  hidden #chooseBands value="{{band.id}}" type="text">
+                        <button class="btn btn-outline-danger" (click)="chooseDelete(chooseBands.value)">ยกเลิก
+                        </button>
                         
-                    </th>
+                    </td>
                 </tr>
-            </thead>
+            </tbody>
         </table>
     </div>
 </div>

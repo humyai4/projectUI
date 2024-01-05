@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient,HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   FormBuilder,
   FormControl,
@@ -7,6 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
+import { LocalService } from '../local.service';
+import { data } from 'jquery';
 
 
 @Component({
@@ -17,96 +21,75 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ContactBandComponent implements OnInit {
 
   constructor(
+    private localStore: LocalService,
+    private router: Router,
     private http: HttpClient,
     private fb: FormBuilder,
     private modalService: NgbModal,
     config: NgbModalConfig,
-  ) { 
+  ) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
-  confirmChoose(content:any) {
+  confirmChoose(content: any) {
     this.modalService.open(content);
   }
-  
-  choosedband:any[] = [];
+
+  choosedband: any[] = [];
 
   ngOnInit(): void {
     const empid = localStorage.getItem("id")
-    let url =`http://180.183.246.177:1114/choose/choosebandid?emp=${empid}`;
+    let url = `http://180.183.246.177:1114/choose/choosebandid?emp=${empid}`;
     this.http
-    .get<any[]>(url)
-    .subscribe((response) => {
-      this.choosedband = response;
-      const bjidArray = response.map(item => item.bjId);
-      this.handleArray(bjidArray);
-      console.log(this.choosedband,bjidArray)
+      .get<any[]>(url)
+      .subscribe((response) => {
+        this.choosedband = response;
+        const bjidArray = response.map(item => item.bjId);
+        this.handleArray(bjidArray);
+        // console.log(bjidArray)
+      });
+
+
+  }
+
+  contactBand : any[] = [];
+  handleArray(bjidArray: any[]): void {
+    let observables = [];
+    for (var val of bjidArray) {
+      let url = `http://180.183.246.177:1114/brandjob/jobid?job=${val}`
+      let observable = this.http.get<any[]>(url);
+      observables.push(observable);
+    }
+    // ใช้ forkJoin เพื่อรวม Observables ทั้งหมด
+    forkJoin(observables).subscribe((responses) => {
+      this.contactBand = responses
+      // console.log(this.contactBand);
+      // responses คือ Array ที่มีข้อมูลทั้งหมดจาก HTTP requests
     });
-
-
   }
-  handleArray(bjidArray:any[]):void{
-    let url = `http://180.183.246.177:1114/brandjob/jobid?job=${bjidArray.join(',')}`
-    this.http
-    .get<any[]>(url)
-    .subscribe((response) =>{
-       console.log(response)
-    });
-    console.log(bjidArray,)
-
-    
-    // const productIds = [1, 2, 3, 4, 5];
-    // const queryString = productIds.map(id => `id=${id}`).join('&');
-    
-    // this.http.get(`https://example.com/api/products?${queryString}`)
-    //   .subscribe(response => {
-    //     console.log(response);
-    //   });
-
-    // const params : any = new URLSearchParams
-    // const queryString = bjidArray.map(job => `job=${job}`).join('&');
-    // bjidArray.forEach(param => params.append('job', param.toString()));
-    // let url = `http://180.183.246.177:1114/brandjob/jobid?${queryString}`;
-    // this.http.get<any[]>(url)
-    // .subscribe((response) => {
-    //   console.log(response)
-    //   // Do something with the response array here
-    // }, (error) => {
-    //   console.error(error);
-    // });
-
-
-    // interface User {
-    //   id: number;
-    //   name: string;
-    //   age: number;
-    // }
-    
-    // const users: User[] = [
-    //   { id: 1, name: 'Alice', age: 25 },
-    //   { id: 2, name: 'Bob', age: 30 },
-    //   { id: 3, name: 'Charlie', age: 35 },
-    //   { id: 4, name: 'David', age: 40 },
-    //   { id: 5, name: 'Eve', age: 45 }
-    // ];
-    
-    // function getUsersByIds(ids: number[]): User[] {
-    //   return users.filter(user => ids.includes(user.id));
-    // }
-    
-    // const ids = [1, 3, 5];
-    // const usersByIds = getUsersByIds(ids);
-    // console.log
-
+  detailBut(id: any): void {
+    this.localStore.saveData('codeId', id);
+    this.router.navigate(['/bandDetail']);
+    // console.log()
   }
-  test():void{
+
+  chooseDelete(bandid : any): void {
+    const chooseDeleteForm = new FormData
+    chooseDeleteForm.append('id',bandid.value)
+    console.log(this.contactBand)
+    // const chooseDeleteForm = new FormData
+    // chooseDeleteForm.append('id',bandid.value)
+    // let url = `http://180.183.246.177:1114/choose/choosebandDelete`
+    // this.http.post(url,chooseDeleteForm).toPromise().then((data:any) =>{
+    //   console.log(data)
+    // })
   }
-  
 
 
 
 
-  choosed:FormGroup = this.fb.group({
+
+  choosed: FormGroup = this.fb.group({
 
   })
 

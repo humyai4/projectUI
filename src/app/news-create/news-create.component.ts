@@ -74,13 +74,13 @@ export class NewsCreateComponent implements OnInit {
   }
 
   //TABLE *****
-  newsList: News[] = [];
+  newsList: any;
   ngOnInit(): void {
     this.http
-      .get<News[]>('http://180.183.246.177:1114/news/newsList')
+      .get<any>('http://180.183.246.177:1114/news/newsList')
       .subscribe((response) => {
         this.newsList = response;
-        // console.log( response);
+        console.log(response);
       });
   }
 

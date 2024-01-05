@@ -1,17 +1,25 @@
-<p>notification works!</p>
-<br /><br /><br />
-<div class="row">
-    <div>
-        <h1>
-            notification
-        </h1>
-    </div>
-    <div *ngFor="let notify of noti" class="row">
+<html>
+<header>
 
-        <div class="col-12">
-            <button type="button" class="btn btn-light" mdbRipple rippleColor="dark">
-              <span>{{notify.userIdForm}}{{notify.descrip}}</span>  
-            </button> 
+</header>
+
+<body>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1>
+                เกิดอะไรขึ้นบ้างที่เกี่ยวกับคุณ ?
+            </h1>
         </div>
     </div>
-</div>
+    <div *ngFor="let notify of noti" class="row justify-content-center">
+
+        <div class="col-md-8 " style="margin-top: 50px;">
+            <input type="text" #getUsers value="{{notify.userIdForm}}">
+            <button  type="button" class="btn btn-light" mdbRipple rippleColor="dark">
+                 <span></span><span>{{notify.descrip}}</span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { News } from './news-bar';
+import { LocalService } from '../local.service';
 
 @Component({
   selector: 'app-news-bar',
@@ -44,13 +45,26 @@ export class NewsBarComponent {
   }
 
   newsList: News[] = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private localStore: LocalService) {}
   ngOnInit(): void {
+    this.HaveRoleAccess()
     this.http
       .get<News[]>('http://180.183.246.177:1114/news/newsList')
       .subscribe((response) => {
         this.newsList = response;
-        // console.log( response);
       });
+  }
+
+
+  HaveRoleAccess() {
+   
+    const role = this.localStore.getData('role');
+    if (role == '' || role == '3') {
+      console.log(role)
+      return false;
+    } else {
+      return true
+    }
+    
   }
 }
