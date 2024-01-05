@@ -76,7 +76,7 @@ export class ContactBandComponent implements OnInit {
   chooseDelete(bandid : any): void {
     const chooseDeleteForm = new FormData
     chooseDeleteForm.append('id',bandid.value)
-    console.log(this.contactBand)
+    console.log(bandid,chooseDeleteForm)
     // const chooseDeleteForm = new FormData
     // chooseDeleteForm.append('id',bandid.value)
     // let url = `http://180.183.246.177:1114/choose/choosebandDelete`
