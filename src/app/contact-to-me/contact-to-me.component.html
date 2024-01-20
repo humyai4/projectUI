@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header text-white bg-secondary">
+        <h2>
+            คนที่ติดต่อมา
+        </h2>
+    </div>
+    <div class="card-body" style="height: 300px; overflow-y: scroll;">
+        <table class="table table-striped table table-hover">
+            <tbody>
+                <tr *ngFor="let cont of contactmeArray">
+                    <td class="col-md-3">
+                        {{cont.response2.username}}
+                    </td>
+                    <td class="col-md-3">
+                        <h6 class="text-danger">สนใจวง</h6>
+                    </td>
+                    <td class="col-md-3">
+                        {{cont.response1.bjName}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

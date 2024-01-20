@@ -9,32 +9,13 @@
             <h6><a class="nav-link active text-light border border-white border-top-0 border-bottom-0" style="width: 7rem;" href="">Home</a></h6>
           </li>
           <li class="nav-item">
-            <h6><a class="nav-link text-light form-inline border border-white border-top-0 border-bottom-0 border-start-0 " style="width: 7rem;" *ngIf="!butinv" href="#" routerLink="/band">หาวงดนตรี</a></h6>
+            <h6><a class="nav-link text-light form-inline border border-white border-top-0 border-bottom-0 border-start-0 " style="width: 7rem;" *ngIf="!butinv" href="#" routerLink="/band">วงดนตรี</a></h6>
           </li>
           <li class="nav-item">
             <h6><a class="nav-link text-light form-inline border border-white border-top-0 border-bottom-0 border-start-0 " style="width: 9rem;" *ngIf="!butinv" href="#" routerLink="/notification"> <i class="bi bi-bell"></i> Notification</a></h6>
           </li>
           
         </ul>
-        
-
-
-        <!-- notify -->
-<!--         
-        <a ngbDropdown ngbDropdownToggle href="#" routerLink="notification" class="notification">
-          <span><h2><i class="bi bi-bell-fill"></i></h2></span>
-          <div ngbDropdownMenu >Tset</div>
-        </a> -->
-
-
-        <!-- <form class="form-inline col-md-2" *ngIf="!butinv">
-          <button           
-          class="btn btn-1 btn-light regis-b"
-          type="button"
-          routerLink="/findband">
-         <h6>หาวงดนตรี</h6> 
-          </button>
-        </form> -->
 
 
         <!-- SESION -->
@@ -68,61 +49,6 @@
           <li  class="nav-item col-md-3">
             <h3><a routerLink="/login"><i class="bi bi-box-arrow-in-right text-white text-center"></i></a></h3>
           </li>
-        </ul>
-
-
-
-        <!-- <div  routerLink="/profile" class="col-md-2 col-sm-12 text-light btn-dark" style="text-align: center" *ngIf="!butinv">
-          <h6>{{ session }}</h6> -->
-          <!-- <form class="row form-inline justify-content-center" *ngIf="!butinv">
-          
-            <div ngbDropdown class="row col-md-10 col-6 justify-content-center">
-
-              <button
-                type="button"
-                routerLink="profile"
-                class=" btn-2 col-md-10 col-9 btn btn-secondary justify-content-center">
-                <h6>{{ session }}</h6>
-              </button>
-              <button
-                type="button"
-                class="col-md-2 col-3 btn-2 btn btn-secondary dropdown-toggle justify-content-center"
-                id="dropdownBasic1"
-                ngbDropdownToggle
-              ></button>
-              <div
-                ngbDropdownMenu
-                aria-labelledby="dropdownBasic1"
-                class="sassion-dropdown"
-              >
-                <button ngbDropdownItem routerLink="profile">Profile</button>
-                <a ngbDropdownItem href="http://180.183.246.177:1115/linelogin" class="linebut text-white" >Connect LINE</a>
-                <div class="dropdown-divider"></div>
-                <button (click)="logout()"  ngbDropdownItem>Logout</button>
-
-              </div>
-            </div>
-          </form> -->
-
-          <!-- lOGIN-LOGOUT -->
-          <!-- <form class="form-inline col-12" *ngIf="butinv">
-            <button
-              class="btn btn-1 btn-light regis-b"
-              type="button"
-              routerLink="/register"
-            >
-              <i class="bi bi-clipboard-plus-fill"></i>
-            </button>
-            <button
-              class="btn btn-1 btn-secondary"
-              routerLink="/login"
-              type="button"
-            >
-              <i class="bi bi-box-arrow-in-right"></i>
-            </button>
-          </form> -->
-        <!-- </div> -->
-        
-        
+        </ul>        
       </nav>
 

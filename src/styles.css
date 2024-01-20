@@ -3,6 +3,7 @@
 @import "~font-awesome/css/font-awesome.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import url('https://fonts.googleapis.com/css?family=Kanit');
+@import "~bootstrap/dist/css/bootstrap.css";
 
 * {
     font-family: 'Kanit', sans-serif;

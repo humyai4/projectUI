@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   id: any;
   role: any;
   tellNumb : any;
-  profile: any
+  profile : any ='';
 
   userUpdateForm: FormGroup = this.fb.group({
     username: ['', [Validators.required]],

@@ -27,6 +27,8 @@ import { UserPerformComponent } from './user-perform/user-perform.component';
 // import { DataTablesModule } from "angular-datatables";
 import { FilterPipe } from './filter.pipe';
 import { PerformCreateComponent } from './perform-create/perform-create.component';
+import { BandDetailPageComponent } from './band-detail-page/band-detail-page.component';
+import { ContactToMeComponent } from './contact-to-me/contact-to-me.component';
 
 
 
@@ -50,7 +52,9 @@ import { PerformCreateComponent } from './perform-create/perform-create.componen
     BandPageComponent,
     UserPerformComponent,
     FilterPipe,
-    PerformCreateComponent
+    PerformCreateComponent,
+    BandDetailPageComponent,
+    ContactToMeComponent
   ],
   imports: [
     
@@ -63,7 +67,6 @@ import { PerformCreateComponent } from './perform-create/perform-create.componen
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot([]),
-    // DataTablesModule ,
   ],
   providers: [],
   bootstrap: [AppComponent]
