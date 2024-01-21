@@ -6,11 +6,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
+import { mergeMap, map } from 'rxjs/operators';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { count } from 'rxjs';
 import { Pipe, PipeTransform } from '@angular/core';
-import { type } from 'jquery';
+import { data, type } from 'jquery';
 import { Router } from '@angular/router';
 import { LocalService } from '../local.service';
 
@@ -97,16 +97,16 @@ export class FineBandComponent implements OnInit {
     // console.log()
   }
 
-  ownerButton(userIds:any): Boolean{
-    let ownerButton:Boolean 
-    if(this.id == userIds.value){
+  ownerButton(userIds: any): Boolean {
+    let ownerButton: Boolean
+    if (this.id == userIds.value) {
       ownerButton = false
       // console.log(userIds.value)
     } else {
       ownerButton = true
     }
     return ownerButton
-    
+
   }
 
   isToggleButton(a: any): Boolean {
@@ -120,11 +120,11 @@ export class FineBandComponent implements OnInit {
     return isToggle
   }
 
-  chooseBand(bjIds:any,userIds:any): void {
+  chooseBand(bjIds: any, userIds: any): void {
     this.id = localStorage.getItem("id")
     const chooseBandForm = new FormData();
     chooseBandForm.append('empId', this.id);
-    chooseBandForm.append('userId',userIds.value);
+    chooseBandForm.append('userId', userIds.value);
     chooseBandForm.append('bjId', bjIds.value);
     let url = 'http://180.183.246.177:1114/choose/createorder';
     this.http
@@ -195,8 +195,23 @@ export class FineBandComponent implements OnInit {
 
   bjDelete(id: any): void {
     const bjId = new FormData();
-    let url = `http://180.183.246.177:1114/brandjob/jobDelete?id=`;
     bjId.append('id', id)
+    let url2 = `http://180.183.246.177:1114/choose/choosebandBj?bjid=${id}`
+    this.http.get<any[]>(url2).subscribe((respones)=>{
+      const deleteContactband = respones.map(item => ({chooseband : item.id}))
+      for(const choosebandId of  deleteContactband){
+        const cbId = new FormData();
+        cbId.append('id',choosebandId.chooseband)
+        const url3 = `http://180.183.246.177:1114/choose/choosebandDelete`;
+        this.http.post(url3,cbId).toPromise().then((data:any)=>{
+          
+        })
+        console.log(cbId)
+      }
+      
+      
+    })
+    let url = `http://180.183.246.177:1114/brandjob/jobDelete?id=`;
     this.http.post(url, bjId).toPromise().then((data: any) => {
       alert(data.message)
       window.location.reload();
