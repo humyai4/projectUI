@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-header">
+    <div class="card-header text-white bg-secondary ">
         <h2>
             วงที่คุณสนใจ
         </h2>
@@ -8,7 +8,7 @@
         <table class="table table-striped table table-hover">
             <tbody>
                 <tr *ngFor="let band of contactBand">
-                    <td class="col-md-4" style="text-align: center;">
+                    <td class="col-md-4">
                         {{band.bjName}}
                     </td>
                     <td class="col-md-3">
@@ -17,10 +17,9 @@
                         <input hidden #chooseBands value="{{band.id}}" type="text">
                     </td>
                     <td class="col-md-2">
-                        <input  #chooseBands value="{{band.id}}" type="text">
+                        <input hidden #chooseBands value="{{band.id}}" type="text">
                         <button class="btn btn-outline-danger" (click)="chooseDelete(chooseBands.value)">ยกเลิก
                         </button>
-                        
                     </td>
                 </tr>
             </tbody>

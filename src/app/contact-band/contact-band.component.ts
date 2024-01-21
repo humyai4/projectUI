@@ -58,6 +58,7 @@ export class ContactBandComponent implements OnInit {
     for (var val of bjidArray) {
       let url = `http://180.183.246.177:1114/brandjob/jobid?job=${val}`
       let observable = this.http.get<any[]>(url);
+      // console.log()
       observables.push(observable);
     }
     // ใช้ forkJoin เพื่อรวม Observables ทั้งหมด
@@ -76,7 +77,7 @@ export class ContactBandComponent implements OnInit {
   chooseDelete(bandid : any): void {
     const chooseDeleteForm = new FormData
     chooseDeleteForm.append('id',bandid.value)
-    console.log(bandid,chooseDeleteForm)
+    // console.log(bandid)
     // const chooseDeleteForm = new FormData
     // chooseDeleteForm.append('id',bandid.value)
     // let url = `http://180.183.246.177:1114/choose/choosebandDelete`

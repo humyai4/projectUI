@@ -28,6 +28,7 @@ import { UserPerformComponent } from './user-perform/user-perform.component';
 import { FilterPipe } from './filter.pipe';
 import { PerformCreateComponent } from './perform-create/perform-create.component';
 import { BandDetailPageComponent } from './band-detail-page/band-detail-page.component';
+import { ContactToMeComponent } from './contact-to-me/contact-to-me.component';
 
 
 
@@ -52,7 +53,8 @@ import { BandDetailPageComponent } from './band-detail-page/band-detail-page.com
     UserPerformComponent,
     FilterPipe,
     PerformCreateComponent,
-    BandDetailPageComponent
+    BandDetailPageComponent,
+    ContactToMeComponent
   ],
   imports: [
     

@@ -19,6 +19,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { UserPerformComponent } from './user-perform/user-perform.component';
 import { PerformCreateComponent } from './perform-create/perform-create.component';
 import { BandDetailPageComponent } from './band-detail-page/band-detail-page.component';
+import { ContactToMeComponent } from './contact-to-me/contact-to-me.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,8 @@ const routes: Routes = [
     path : "performcreate" , component : PerformCreateComponent,
   },{
     path : "bandDetail", component : BandDetailPageComponent,
+  },{
+    path : "contactme", component : ContactToMeComponent,
   }
 
 ];

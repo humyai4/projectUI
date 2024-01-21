@@ -80,7 +80,7 @@ export class NewsCreateComponent implements OnInit {
       .get<any>('http://180.183.246.177:1114/news/newsList')
       .subscribe((response) => {
         this.newsList = response;
-        console.log(response);
+        // console.log();
       });
   }
 
@@ -109,7 +109,7 @@ export class NewsCreateComponent implements OnInit {
     newsDeleteForm.append('newsId',newsIDS.value);
     let url = 'http://180.183.246.177:1114/news/newsDelete'
     this.http.post(url,newsDeleteForm).toPromise().then((data:any)=>{
-      console.log(Math)
+      console.log()
       window.location.reload();
     })
   }
